@@ -19,6 +19,8 @@ setup(
 )
 
 mpl_stylelib_dir = Path.home() / ".config" / "matplotlib" / "stylelib"
-stylesheet_path = Path(os.path.dirname(__file__)) / "resources" / "mpl_utils.mplstyle"
+stylesheet_path = (
+    Path(os.path.dirname(__file__)) / "resources" / "mpl_utils.mplstyle"
+)
 os.makedirs(mpl_stylelib_dir, exist_ok=True)
 shutil.copyfile(stylesheet_path, mpl_stylelib_dir / "mpl_utils.mplstyle")
