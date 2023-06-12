@@ -1,4 +1,3 @@
-from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.collections import LineCollection
 from matplotlib.patches import FancyArrowPatch
 from matplotlib.colors import Normalize
@@ -8,7 +7,6 @@ __all__ = [
     "draw_arrows",
     "draw_earth",
     "draw_multicolored_line",
-    "add_colorbar",
 ]
 
 
@@ -71,9 +69,3 @@ def draw_multicolored_line(
         ax.set_ylim(y.min() - 0.1 * Ly, y.max() + 0.1 * Ly)
 
     return line
-
-
-def add_colorbar(axis, where="right", pad=0.05, size="2%"):
-    r"""Adds colorbar next to an axis"""
-    divider = make_axes_locatable(axis)
-    return divider.append_axes(where, size=size, pad=pad)
