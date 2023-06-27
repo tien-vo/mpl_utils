@@ -49,7 +49,7 @@ def draw_earth(axis, R=1, N=50, zorder=999):
 
 
 def draw_multicolored_line(
-    axis, x, y, c, cmap="jet", vmin=None, vmax=None, set_lim=False
+    axis, x, y, c, cmap="jet", vmin=None, vmax=None, set_lim=False, **kwargs
 ):
     r"""Draws a line with colors on a scale determined by c"""
 
@@ -59,13 +59,13 @@ def draw_multicolored_line(
     points = np.array([x, y]).T.reshape(-1, 1, 2)
     segments = np.concatenate([points[:-1], points[1:]], axis=1)
     norm = Normalize(vmin, vmax)
-    lc = LineCollection(segments, cmap=cmap, norm=norm)
+    lc = LineCollection(segments, cmap=cmap, norm=norm, **kwargs)
     lc.set_array(c)
     line = axis.add_collection(lc)
     if set_lim:
         Lx = x.max() - x.min()
         Ly = y.max() - y.min()
-        ax.set_xlim(x.min() - 0.1 * Lx, x.max() + 0.1 * Lx)
-        ax.set_ylim(y.min() - 0.1 * Ly, y.max() + 0.1 * Ly)
+        axis.set_xlim(x.min() - 0.1 * Lx, x.max() + 0.1 * Lx)
+        axis.set_ylim(y.min() - 0.1 * Ly, y.max() + 0.1 * Ly)
 
     return line
